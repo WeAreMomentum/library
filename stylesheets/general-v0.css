@@ -1,0 +1,94 @@
+/* General V 0.2 */
+/* by Aleksander Knöbl */
+
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto;
+  overflow-y: overlay;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+body {
+  position: relative;
+}
+main {
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, a, p, blockquote,
+button, input, label, option, select, textarea,
+*::before, *::after {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+ul, ol {
+  margin: 0;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  object-fit: contain;
+}
+img {
+  max-width: none;
+}
+p, h1, h2, h3, h4 {
+  overflow-wrap: break-word;
+}
+.hidden {
+  display: none !important;
+}
+.no-scroll,
+html.popup-open {
+  overflow: hidden !important;
+}
+/* Webflow */
+.w-embed::before, .w-embed::after,
+.w-richtext::before, .w-richtext::after,
+.w-checkbox::before, .w-checkbox::after,
+.w-radio::before, .w-radio::after {
+  content: none;
+}
+.w-form {
+  margin: 0;
+}
+.w-input, .w-select {
+  height: auto;
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+.w-checkbox, .w-radio {
+  padding: 0;
+}
+.w-checkbox-input, .w-radio-input {
+  float: initial;
+  margin: 0;
+}
+.w-form-label {
+  font-weight: inherit;
+}
+.w-slider-mask {
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+.w-slide {
+  height: auto;
+  flex-shrink: 0;
+}
+/*
+.w-file-upload-label, .w-file-upload-file-name, .w-file-upload-uploading-btn {
+  font: inherit;
+  color: inherit;
+}
+*/
