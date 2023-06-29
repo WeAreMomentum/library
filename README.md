@@ -21,15 +21,23 @@ CMS Slider V3.0 -> `cms-slider-v3`
 ### Versioning
 <!-- https://mermaid.js.org/intro/ -->
 ```mermaid
-flowchart TD
-    A[CMS Slider V2.3] --> B{new version is downwards compatible?}
-    B -->|Yes| C[CMS Slider V2.4]
-    B -->|No| D[CMS Slider V3.0]
+flowchart LR
+    v23["`CMS Slider V2.3
+    cms-slider-v2`"]
+    cond{"`new version
+    is downwards
+    compatible?`"}
+    v24["`CMS Slider V2.4
+    cms-slider-v2
+    same file`"]
+    v30["`CMS Slider V3.0
+    cms-slider-v3
+    new file (keep old file)`"]
+
+    v23 --> cond
+    cond -->|Yes| v24
+    cond -->|No| v30
 ```
-
-CMS Slider V2.3 -> new version is downwards compatible? -> V2.4 (same file)
-
-else -> V3.0 (new file: `cms-slider-v3`, keep old file)
 
 ## Stylesheets
 A collection of various stylesheets to add to our Webflow projects.
