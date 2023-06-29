@@ -23,17 +23,15 @@ CMS Slider V3.0 -> `cms-slider-v3`
 <!-- https://mermaid.js.org/intro/ -->
 ```mermaid
 flowchart LR
-    v23["CMS Slider V2.3
-    cms-slider-v2.js"]
+    v23["CMS Slider V2.3"]
     cond{"new version
     is downwards
     compatible?"}
     v24["CMS Slider V2.4
-    cms-slider-v2.js
     same file"]
     v30["CMS Slider V3.0
-    cms-slider-v3.js
-    new file (keep old file)"]
+    new file
+    (keep old file)"]
 
     v23 --> cond
     cond -->|Yes| v24
