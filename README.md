@@ -24,9 +24,9 @@ CMS Slider V3.0 -> `cms-slider-v3`
 ```mermaid
 flowchart LR
     v23["CMS Slider V2.3"]
-    cond{"new version
+    cond{{"new version
     is downwards
-    compatible?"}
+    compatible?"}}
     v24["CMS Slider V2.4
     same file"]
     v30["CMS Slider V3.0
