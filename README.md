@@ -21,19 +21,18 @@ CMS Slider V3.0 -> `cms-slider-v3`
 ### Versioning
 <!-- https://mermaid.js.org/intro/ -->
 ```mermaid
-%%{init: {"flowchart": {"htmlLabels": false}} }%%
 flowchart LR
-    v23["`CMS Slider V2.3
-    cms-slider-v2`"]
-    cond{"`new version
+    v23["CMS Slider V2.3
+    cms-slider-v2"]
+    cond{"new version
     is downwards
-    compatible?`"}
-    v24["`CMS Slider V2.4
+    compatible?"}
+    v24["CMS Slider V2.4
     cms-slider-v2
-    same file`"]
-    v30["`CMS Slider V3.0
+    same file"]
+    v30["CMS Slider V3.0
     cms-slider-v3
-    new file (keep old file)`"]
+    new file (keep old file)"]
 
     v23 --> cond
     cond -->|Yes| v24
