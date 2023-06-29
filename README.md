@@ -16,23 +16,20 @@ A collection of various scripts to implement functionality to our Webflow projec
 
 Create a md-file for documentation for every script-file.
 ### Naming
-`cms-slider.v2`
+CMS Slider V2.3 -> `cms-slider-v2`
+CMS Slider V3.0 -> `cms-slider-v3`
 ### Versioning
-<!-- http://flowchart.js.org/ -->
-```flow
-v21=>start: CMS Slider V2.1
-v22=>end: CMS Slider V2.2
-v30=>end: CMS Slider V3.0
-cond=>condition: new version is downwards compatible?
-
-v21->cond
-cond(yes)->v22
-cond(no)->v30
+<!-- https://mermaid.js.org/intro/ -->
+```mermaid
+flowchart TD
+    A[CMS Slider V2.3] --> B{new version is downwards compatible?}
+    B -->|Yes| C[CMS Slider V2.4]
+    B -->|No| D[CMS Slider V3.0]
 ```
 
-CMS Slider V2.1 -> new version is downwards compatible? -> V2.2 (same file)
+CMS Slider V2.3 -> new version is downwards compatible? -> V2.4 (same file)
 
-else -> V3.0 (new file: `cms-slider.v3`, keep old file)
+else -> V3.0 (new file: `cms-slider-v3`, keep old file)
 
 ## Stylesheets
 A collection of various stylesheets to add to our Webflow projects.
