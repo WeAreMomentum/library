@@ -16,6 +16,8 @@ Important note: do NOT use `async` for scripts to be executed before Webflow ini
 A collection of various scripts to implement functionality to our Webflow projects.
 
 Create a md-file for documentation for every script-file.
+
+The following naming and versioning rules ensure that projects always use the newest subversion of a script, without the need to update the filename in every project.
 ### Naming
 CMS Slider V2.3 -> `cms-slider-v2`
 
