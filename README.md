@@ -1,5 +1,5 @@
 # Library
-Public library of scripts, stylesheets and assets for our (Webflow) websites.
+Public library of scripts and stylesheets for our (Webflow) websites.
 
 To use these files in a (Webflow) project, reference them via `https://wearemomentum.github.io/library/`.
 
