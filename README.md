@@ -7,16 +7,10 @@ Example: `<script src="https://wearemomentum.github.io/library/scripts/cms-slide
 
 Important note: do NOT use `async` for scripts to be executed before Webflow initialization.
 
-- [Assets](#assets)
 - [Scripts](#scripts)
   - [Naming](#naming)
   - [Versioning](#versioning)
 - [Stylesheets](#stylesheets)
-
-## Assets
-Webflow is very restrictive in regards to assets. Files that cannot be uploaded to Webflow can be hosted here.
-
-Create a folder for each project (website) and add files there.
 
 ## Scripts
 A collection of various scripts to implement functionality to our Webflow projects.
