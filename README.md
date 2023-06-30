@@ -2,6 +2,11 @@
 Public library of scripts, stylesheets and assets for our (Webflow) websites.
 
 To use these files in a (Webflow) project, reference them via `https://wearemomentum.github.io/library/`.
+
+Example: `<script src="https://wearemomentum.github.io/library/scripts/cms-slider-v2.js"></script>`
+
+Important note: do NOT use `async` for scripts to be executed before Webflow initialization.
+
 - [Assets](#assets)
 - [Scripts](#scripts)
   - [Naming](#naming)
@@ -11,7 +16,7 @@ To use these files in a (Webflow) project, reference them via `https://wearemome
 ## Assets
 Webflow is very restrictive in regards to assets. Files that cannot be uploaded to Webflow can be hosted here.
 
-Create a folder for the project (website) and add your files.
+Create a folder for each project (website) and add files there.
 
 ## Scripts
 A collection of various scripts to implement functionality to our Webflow projects.
@@ -25,19 +30,19 @@ CMS Slider V3.0 -> `cms-slider-v3`
 <!-- https://mermaid.js.org/intro/ -->
 ```mermaid
 flowchart LR
-    v23["CMS Slider V2.3"]
-    cond{{"new version
-    is downwards
-    compatible?"}}
-    v24["CMS Slider V2.4
-    same file"]
-    v30["CMS Slider V3.0
-    new file
-    (keep old file)"]
+  v23["CMS Slider V2.3"]
+  cond{{"new version
+  is downwards
+  compatible?"}}
+  v24["CMS Slider V2.4
+  same file"]
+  v30["CMS Slider V3.0
+  new file
+  (keep old file)"]
 
-    v23 --> cond
-    cond -->|Yes| v24
-    cond -->|No| v30
+  v23 --> cond
+  cond -->|Yes| v24
+  cond -->|No| v30
 ```
 
 ## Stylesheets
