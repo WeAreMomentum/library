@@ -8,10 +8,6 @@ Public library of scripts and stylesheets for our (Webflow) websites.
 ## General
 To use these files in a (Webflow) project, reference them via `https://wearemomentum.github.io/library/`.
 
-Example: `<script src="https://wearemomentum.github.io/library/scripts/cms-slider-v2.js"></script>`
-
-Important note: do NOT use `async` for scripts to be executed before Webflow initialization.
-
 The following naming and versioning rules ensure that projects always use the newest subversion of a file, without the need to update the filename in every project.
 
 ### Naming
@@ -41,7 +37,13 @@ flowchart LR
 ## Scripts
 A collection of various scripts to implement functionality to our Webflow projects.
 
-Create a md-file for documentation for every script-file.
+There's a .md documentation for every script.
+
+Example: `<script src="https://wearemomentum.github.io/library/scripts/cms-slider-v2.js"></script>`
+
+Important note: do NOT use `async` for scripts to be executed before Webflow initialization.
 
 ## Stylesheets
 A collection of various stylesheets to add to our Webflow projects.
+
+Example: `<link href="https://wearemomentum.github.io/library/stylesheets/general-v0.css" rel="stylesheet" type="text/css">`
