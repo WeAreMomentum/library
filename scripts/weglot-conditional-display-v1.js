@@ -1,4 +1,4 @@
-// Weglot Conditional Display V 1.0
+// Weglot Conditional Display V 1.1
 // by Aleksander Knöbl
 
 (function(){
@@ -7,10 +7,10 @@
     const langElements = [...document.querySelectorAll('[data-weglot-conditional-display]')];
     const currentLangElements = langElements.filter(elem => elem.dataset.weglotConditionalDisplay.includes(lang));
     langElements.forEach(elem => {
-      elem.classList.add('hidden');
+      elem.classList.add('weglot-hidden');
     });
     currentLangElements.forEach(elem => {
-      elem.classList.remove('hidden');
+      elem.classList.remove('weglot-hidden');
     });
   }
   Weglot.on('languageChanged', function(newLang, prevLang) {

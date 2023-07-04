@@ -42,7 +42,9 @@ img {
 p, h1, h2, h3, h4 {
   overflow-wrap: break-word;
 }
-.hidden {
+.hidden,
+.filter-hidden,
+.weglot-hidden {
   display: none !important;
 }
 .no-scroll,

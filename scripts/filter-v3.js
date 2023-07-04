@@ -1,4 +1,4 @@
-// Filter V 3.3
+// Filter V 3.4
 // by Aleksander Knöbl
 
 (function () {
@@ -56,15 +56,15 @@
     }
     #limit(showMore = false) {
       // empty state
-      this.itemsFiltered.length == 0 ? this.emptyState.classList.remove('hidden') : this.emptyState.classList.add('hidden');
+      this.itemsFiltered.length == 0 ? this.emptyState.classList.remove('filter-hidden') : this.emptyState.classList.add('filter-hidden');
       // final list of elements to show
       this.itemsLimited = this.itemsFiltered;
       if (this.moreButton) {
         if (this.itemsFiltered.length > this.limitBy) {
           this.itemsLimited = this.itemsFiltered.slice(0, this.limitBy);
-          this.moreButton.element.classList.remove('hidden');
+          this.moreButton.element.classList.remove('filter-hidden');
         } else {
-          this.moreButton.element.classList.add('hidden');
+          this.moreButton.element.classList.add('filter-hidden');
         }
       }
       // list of elements to hide
@@ -237,14 +237,14 @@
       this.element.querySelectorAll('[data-filter="tag"]').forEach(elem => {
         (this.tags[elem.dataset.filterTag] ?? (this.tags[elem.dataset.filterTag] = [])).push(elem.textContent);
       });
-      this.element.classList.add('hidden');
+      this.element.classList.add('filter-hidden');
     }
     hide() {
       this.element.style = 'transform: translateY(' + vh + 'vh); opacity: 0;';
-      setTimeout(() => this.element.classList.add('hidden'), ms);
+      setTimeout(() => this.element.classList.add('filter-hidden'), ms);
     }
     show() {
-      this.element.classList.remove('hidden');
+      this.element.classList.remove('filter-hidden');
       setTimeout(() => this.element.style = 'transform: translateY(0vh); opacity: 1;', 10);
     }
   }

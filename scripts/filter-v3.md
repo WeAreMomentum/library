@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To Do's](#to-dos)
 - [Change log](#change-log)
+    - [V3.4](#v34)
     - [V3.3](#v33)
     - [V3.2](#v32)
     - [V3.1](#v31)
@@ -40,6 +41,8 @@ function toggleArrayItem(array, item) {
 -->
 
 ## Change log
+### V3.4
+Change class `hidden` to `filter-hidden` to prevent issues with weglot-conditional-display
 ### V3.3
 Bugfix: remove empty list.
 ### V3.2
