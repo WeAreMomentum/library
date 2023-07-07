@@ -1,4 +1,4 @@
-/* General V 0.3 */
+/* General V 0.4 */
 /* by Aleksander Knöbl */
 
 * {
@@ -42,15 +42,7 @@ img {
 p, h1, h2, h3, h4 {
   overflow-wrap: break-word;
 }
-.hidden,
-.filter-hidden,
-.weglot-hidden {
-  display: none !important;
-}
-.no-scroll,
-html.popup-open {
-  overflow: hidden !important;
-}
+
 /* Webflow */
 .w-embed::before, .w-embed::after,
 .w-richtext::before, .w-richtext::after,
@@ -95,3 +87,18 @@ html.popup-open {
   color: inherit;
 }
 */
+
+/* Custom */
+.hidden,
+.filter-hidden,
+.weglot-hidden {
+  display: none !important;
+}
+html.no-scroll,
+html.popup-open {
+  overflow: hidden !important;
+}
+[data-flip-card="wrapper"] {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
