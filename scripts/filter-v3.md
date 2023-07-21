@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V3.4](#v34)
     - [V3.3](#v33)
@@ -30,7 +30,7 @@ Add these attributes to the wrapper if you want to override the defaults
 - `[data-filter-limit=""]` - the number of items to show by default
 - `[data-filter-more=""]` - the number of items to add on a click on the more-button
 
-## To Do's
+## To-Dos
 - allow multiselect for filters
 <!--
 ```javascript

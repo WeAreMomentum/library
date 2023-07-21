@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V2.3](#v23)
     - [V2.2](#v22)
@@ -15,7 +15,7 @@ Combines the functionalities of Webflow Collection List and Webflow Slider.
     - `.w-slider` - A Webflow Slider that contains just one empty slide
 ### Options defaults:
 
-## To Do's
+## To-Dos
 - rewrite to class oriented code
 
 ## Change log

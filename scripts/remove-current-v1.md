@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.0](#v10)
 
@@ -12,7 +12,7 @@ Removes a link element if it is pointing to the current page.
 - `a[data-remove-current]` - the link element
 ### Options defaults:
 
-## To Do's
+## To-Dos
 
 ## Change log
 ### V1.0

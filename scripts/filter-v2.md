@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V2.0](#v20)
 
@@ -12,7 +12,7 @@ There are various types of triggers possible, function="filter" and function="so
 ### Element structure:
 ### Options defaults:
 
-## To Do's
+## To-Dos
 - write down element structure and options defaults
 
 ## Change log

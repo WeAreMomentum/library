@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.1](#v11)
     - [V1.0](#v10)
@@ -19,7 +19,7 @@ Use this in combination with privacy and cookie policy from iubenda or images co
 - `[data-weglot-conditional-display="de,en"]` - this element will only be displayed for de and en.
 ### Options defaults:
 
-## To Do's
+## To-Dos
 
 ## Change log
 ### V1.1
