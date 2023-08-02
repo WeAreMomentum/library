@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.0](#v10)
 
@@ -16,7 +16,7 @@ Adds tabs functionality to elements.
         - `[data-tabs="slug"]` - if for some reason the `[data-tabs-slug]` attribute cannot be set on the content, add this element as a child
 ### Options defaults:
 
-## To Do's
+## To-Dos
 - ...
 
 ## Change log

@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.0](#v10)
 
@@ -14,7 +14,7 @@ A click on a trigger rotates an element, so it shows it's backside. A click on a
     - `[data-flip-card="show-back"]` - The trigger to show the backside on click.
 ### Options defaults:
 
-## To Do's
+## To-Dos
 
 ## Change log
 ### V1.0

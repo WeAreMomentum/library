@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.1](#v11)
     - [V1.0](#v10)
@@ -16,7 +16,7 @@ adds CMS generated `<option>`s to `<select>`
     - `select` - a select field to append the `<option>`s to
 ### Options defaults:
 
-## To Do's
+## To-Dos
 
 ## Change log
 ### V1.1

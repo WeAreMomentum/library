@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.0](#v10)
 
@@ -14,7 +14,7 @@ Useful for connecting two sliders for example.
 - `[data-click=""]` -  Enter a selector (Example: #button-1) as attribute value.
 ### Options defaults:
 
-## To Do's
+## To-Dos
 - add delay?
 
 ## Change log
