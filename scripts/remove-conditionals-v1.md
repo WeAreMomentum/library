@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.0](#v10)
 
@@ -14,7 +14,7 @@ This Snippet removes all those elements from the DOM.
 ### Element structure:
 ### Options defaults:
 
-## To Do's
+## To-Dos
 
 ## Change log
 ### V1.0

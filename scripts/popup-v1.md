@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.2](#v12)
     - [V1.1](#v11)
@@ -21,7 +21,7 @@ Adds popup functionality to elements.
 Add these attributes to the wrapper if you want to override the defaults
 - `[data-popup-show-init="false"]` - if true: show popup on page load; if number: show popup once per session x milliseconds after page load
 
-## To Do's
+## To-Dos
 - rewrite to class oriented code
 
 ## Change log

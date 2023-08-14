@@ -2,7 +2,7 @@
 - [Description](#description)
     - [Element structure](#element-structure)
     - [Options defaults](#options-defaults)
-- [To Do's](#to-dos)
+- [To-Dos](#to-dos)
 - [Change log](#change-log)
     - [V1.0](#v10)
 
@@ -14,7 +14,7 @@ This is a workaround to Webflow's restriction of max. characters in code-embeds.
 - `[data-img-to-svg]` - the svg-image to be replaced
 ### Options defaults:
 
-## To Do's
+## To-Dos
 
 ## Change log
 ### V1.0
