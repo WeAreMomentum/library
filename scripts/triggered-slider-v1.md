@@ -7,7 +7,7 @@
     - [V1.2](#v12)
 
 ## Description
-
+Allows a slider to be controlled by another slider or an additional set of buttons. 
 ### Element structure:
 - `[data-triggered-slider="wrapper"]` - contains the slider and all related triggers
     - slider 1 - this slider is controlled by slider 2 or a group of buttons
