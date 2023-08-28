@@ -17,6 +17,7 @@ Combines the functionalities of Webflow Collection List and Webflow Slider.
 
 ## To-Dos
 - rewrite to class oriented code
+- move all children, not only the first
 
 ## Change log
 ### V2.3
