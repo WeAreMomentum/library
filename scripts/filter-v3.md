@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V3.5](#v35)
     - [V3.4](#v34)
     - [V3.3](#v33)
     - [V3.2](#v32)
@@ -15,7 +16,7 @@ Adds filter, sort and load-more functionalities to a list of items.
 There are various types of triggers possible, function="filter" and function="sort" must be elements with a value attribute (button, input, select, ...). Use embeds for these preferably.
 ### Element structure:
 - `[data-filter="group"]` - a page can contain multiple groups
-    - `[data-filter="trigger"][data-filter-function="filter"][data-filter-tag=""][value=""]` - optional; triggers filtering
+    - `[data-filter="trigger"][data-filter-function="filter"][data-filter-tag=""][value=""]` - optional; triggers filtering; optional attribute: `[data-filter-init]` marks the default filter setting
     - `[data-filter="trigger"][data-filter-function="sort"][value=""]` - optional; triggers sorting; value: '{"order":"random"}' or '{"tag":"","order":""}' with "order": "+", "-"
     - `[data-filter="trigger"][data-filter-function="reset"]` - optional; resets everything to default
     - `div` - list wrapper
@@ -41,6 +42,8 @@ function toggleArrayItem(array, item) {
 -->
 
 ## Change log
+### V3.5
+Added default filter option.
 ### V3.4
 Change class `hidden` to `filter-hidden` to prevent issues with weglot-conditional-display
 ### V3.3

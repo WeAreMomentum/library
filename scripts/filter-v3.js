@@ -1,4 +1,4 @@
-// Filter V 3.4
+// Filter V 3.5
 // by Aleksander Knöbl
 
 (function () {
@@ -24,6 +24,8 @@
         filters: {},
         sortBy: '',
       };
+      /* doesn't work because of Webflow restrictions with attribute values */
+      /* this.init.filters = this.element.dataset.filterDefault ? JSON.parse(this.element.dataset.filterDefault.replaceAll(`'`, `"`)) : {}; */
       this.init.sortBy = JSON.parse(this.element.dataset.filterSort ? this.element.dataset.filterSort.replaceAll(`'`, `"`) : '{"order":"initial"}');
       this.element.querySelectorAll('[data-filter="trigger"]').forEach(elem => {
         this.triggers.push(new Trigger(elem, this));
@@ -33,14 +35,14 @@
         this.items.push(new Item(elem, this));
       });
       if (this.items[0]) {
-        for (const tag in this.items[0].tags) this.init.filters[tag] = '';
+        for (const tag in this.items[0].tags) this.init.filters[tag] = this.init.filters[tag] || '';
         this.list = this.items[0].element.parentElement;
         this.listWrapper = this.list.parentElement;
         this.listWrapper.style.transition = 'height ' + ms + 'ms ease-in-out';
         this.emptyState = this.element.querySelector('[data-filter="empty-state"]');
         this.reset();
       } else {
-      	this.element.querySelector('.w-dyn-list').remove();
+        this.element.querySelector('.w-dyn-list').remove();
       }
     }
     // private methods
@@ -185,6 +187,7 @@
         case 'filter':
           this.tag = this.element.dataset.filterTag;
           this.tagValue = this.element.value;
+          if (this.element.hasAttribute('data-filter-init')) this.group.init.filters[this.tag] = this.tagValue;
           this.event == 'click' ? this.element.addEventListener('click', this.setFilterClick)
             : this.element.addEventListener(this.event, this.setFilterChange);
           break;
