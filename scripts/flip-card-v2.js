@@ -6,6 +6,7 @@
   class Wrapper {
     constructor(htmlElement) {
       this.element = htmlElement;
+      this.element.tabIndex = 0;
       this.frontSide = this.element.querySelector('[data-flip-card="front"]');
       this.backSide = this.element.querySelector('[data-flip-card="back"]');
       this.element.addEventListener('click', showBack);
