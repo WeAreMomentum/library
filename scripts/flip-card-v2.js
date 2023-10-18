@@ -9,17 +9,17 @@
       this.element.tabIndex = 0;
       this.frontSide = this.element.querySelector('[data-flip-card="front"]');
       this.backSide = this.element.querySelector('[data-flip-card="back"]');
-      this.element.addEventListener('click', showBack);
+      this.element.addEventListener('click', this.showBack);
     }
     showFront() {
       this.element.style.transform = 'perspective(1000px) rotateY(0deg)';
-      this.element.removeEventListener('click', showFront);
-      this.element.addEventListener('click', showBack);
+      this.element.removeEventListener('click', this.showFront);
+      this.element.addEventListener('click', this.showBack);
     }
     showBack() {
       this.element.style.transform = 'perspective(1000px) rotateY(180deg)';
-      this.element.removeEventListener('click', showBack);
-      this.element.addEventListener('click', showFront);
+      this.element.removeEventListener('click', this.showBack);
+      this.element.addEventListener('click', this.showFront);
     }
   }
 
