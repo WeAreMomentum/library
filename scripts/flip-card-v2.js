@@ -9,6 +9,8 @@
       this.element.tabIndex = 0;
       this.frontSide = this.element.querySelector('[data-flip-card="front"]');
       this.backSide = this.element.querySelector('[data-flip-card="back"]');
+      this.showFront = this.showFront.bind(this);
+      this.showBack = this.showBack.bind(this);
       this.element.addEventListener('click', this.showBack);
     }
     showFront() {
