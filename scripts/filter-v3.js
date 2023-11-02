@@ -71,6 +71,7 @@
       }
       // list of elements to hide
       this.itemsHidden = this.items.filter(item => !this.itemsLimited.includes(item));
+      console.log(this.itemsFiltered, this.itemsLimited, this.itemsHidden); // debugging
       // animate
       this.listWrapper.style.height = this.list.scrollHeight + 'px';
       if (showMore) {
