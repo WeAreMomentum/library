@@ -1,4 +1,4 @@
-// CMS Select V 1.1
+// CMS Select V 1.2
 // by Aleksander Knöbl
 
 (function(){
@@ -8,7 +8,7 @@
     wrapper.querySelectorAll('[data-select="value"]').forEach(value => {
       // append option to select
       const option = document.createElement("option");
-      option.value = value.textContent;
+      option.value = value.hasAttribute('data-select-value') ? value.dataset.selectValue : value.textContent;
       option.textContent = value.textContent;
       select.appendChild(option);
     });
