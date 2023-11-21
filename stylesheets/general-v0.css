@@ -1,4 +1,4 @@
-/* General V 0.4 */
+/* General V 0.5 */
 /* by Aleksander Knöbl */
 
 * {
@@ -17,7 +17,7 @@ html {
 body {
   position: relative;
 }
-main, footer {
+header, main, footer {
   overflow-x: hidden;
 }
 h1, h2, h3, h4, a, p, blockquote,
@@ -97,6 +97,13 @@ p, h1, h2, h3, h4 {
 html.no-scroll,
 html.popup-open {
   overflow: hidden !important;
+}
+[data-accordion="accordion"] {
+  cursor: pointer;
+}
+[data-accordion="content"] {
+  transform-origin: 50% 0;
+  overflow: hidden;
 }
 [data-flip-card="wrapper"] {
   -webkit-transform-style: preserve-3d;

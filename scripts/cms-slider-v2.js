@@ -1,4 +1,4 @@
-// CMS Slider V 2.3
+// CMS Slider V 2.4
 // by Aleksander Knöbl
 
 (function(){
@@ -25,7 +25,7 @@
         wrapper.querySelector('.w-slider-nav').style.display = 'none';
       };
     }
-    wrapper.querySelector('.w-dyn-list').remove();
+    wrapper.querySelectorAll('.w-dyn-list').forEach(list => { list.remove(); });
   });
 
 })();
