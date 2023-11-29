@@ -1,4 +1,4 @@
-// Filter V 3.6
+// Filter V 3.5
 // by Aleksander Knöbl
 
 (function () {
@@ -54,10 +54,7 @@
       this.itemsHidden.forEach(item => this.list.appendChild(item.element));
       this.list.scrollHeight == 0 ? this.listWrapper.style.height = '0px'
         : this.listWrapper.style.height = this.list.scrollHeight - window.innerHeight * vh / 100 + 'px';
-      setTimeout(() => {
-        this.listWrapper.style.height = 'auto';
-        Webflow.require('slider').redraw();
-      }, 10 + ms);
+      setTimeout(() => this.listWrapper.style.height = 'auto', 10 + ms);
     }
     #limit(showMore = false) {
       // empty state
