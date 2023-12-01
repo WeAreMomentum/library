@@ -4,7 +4,6 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
-    - [V1.0](#v10)
     - [V0.2](#v02)
 
 ## Description
