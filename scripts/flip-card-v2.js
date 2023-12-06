@@ -1,4 +1,4 @@
-// Flip card V 2.0
+// Flip card V 2.1
 // by Aleksander Knöbl
 
 (function(){
@@ -6,8 +6,6 @@
   class Wrapper {
     constructor(htmlElement) {
       this.element = htmlElement;
-      this.frontSide = this.element.querySelector('[data-flip-card="front"]');
-      this.backSide = this.element.querySelector('[data-flip-card="back"]');
       this.showFront = this.showFront.bind(this);
       this.showBack = this.showBack.bind(this);
       this.element.addEventListener('click', this.showBack);
