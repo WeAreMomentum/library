@@ -1,7 +1,10 @@
-// Remove Conditionals V 1.0
+// Remove Conditionals V 1.1
 // by Maximilian Höper
 
-const invisibleConditions = document.querySelectorAll(".w-condition-invisible");
-invisibleConditions.forEach(function (invisibleCondition) {
-  invisibleCondition.remove();
-});
+(function(){
+
+  document.querySelectorAll('.w-condition-invisible').forEach(elem => {
+    elem.remove();
+  });
+  
+})();
