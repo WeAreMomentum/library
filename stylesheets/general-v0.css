@@ -8,7 +8,6 @@ html {
   height: 100%;
   overflow-x: hidden !important;
   overflow-y: auto;
-  overflow-y: overlay;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-synthesis: none;
@@ -41,6 +40,11 @@ img {
 }
 p, h1, h2, h3, h4 {
   overflow-wrap: break-word;
+}
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 /* Webflow */
