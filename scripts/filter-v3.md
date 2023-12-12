@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V3.6](#v36)
     - [V3.5](#v35)
     - [V3.4](#v34)
     - [V3.3](#v33)
@@ -42,6 +43,8 @@ function toggleArrayItem(array, item) {
 -->
 
 ## Change log
+### V3.6
+Accessibility: Focus on first new element after triggering filter.
 ### V3.5
 Added default filter option.
 ### V3.4

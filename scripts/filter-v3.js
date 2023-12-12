@@ -1,10 +1,17 @@
-// Filter V 3.5
+// Filter V 3.6
 // by Aleksander Knöbl
 
 (function () {
 
   const ms = 300; // duration for items animation in ms
   const vh = 30; // vertical transform for items animation in vh
+
+  function getKeyboardFocusableElements(element = document) {
+    return [...element.querySelectorAll(
+      '[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]),' +
+      'details:not([disabled]), summary:not(:disabled), [tabindex]:not([tabindex="-1"]):not([disabled])'
+    )];
+  }
 
   class Group {
     constructor(htmlElement) {
@@ -46,7 +53,7 @@
       }
     }
     // private methods
-    #animateItems() {
+    #animateItems(nextElement) {
       this.itemsLimited.forEach(item => {
         this.list.appendChild(item.element);
         item.show();
@@ -54,9 +61,15 @@
       this.itemsHidden.forEach(item => this.list.appendChild(item.element));
       this.list.scrollHeight == 0 ? this.listWrapper.style.height = '0px'
         : this.listWrapper.style.height = this.list.scrollHeight - window.innerHeight * vh / 100 + 'px';
-      setTimeout(() => this.listWrapper.style.height = 'auto', 10 + ms);
+      setTimeout(() => {
+        this.listWrapper.style.height = 'auto', 10 + ms;
+        if (nextElement) {
+          const focusables = getKeyboardFocusableElements(this.list.children[nextElement - 1]);
+          focusables[0].focus();
+        }
+      });
     }
-    #limit(showMore = false) {
+    #limit(nextElement, showMore = false) {
       // empty state
       this.itemsFiltered.length == 0 ? this.emptyState.classList.remove('filter-hidden') : this.emptyState.classList.add('filter-hidden');
       // final list of elements to show
@@ -74,10 +87,10 @@
       // animate
       this.listWrapper.style.height = this.list.scrollHeight + 'px';
       if (showMore) {
-        this.#animateItems();
+        this.#animateItems(nextElement);
       } else {
         this.items.forEach(item => item.hide());
-        setTimeout(() => this.#animateItems(), ms);
+        setTimeout(() => this.#animateItems(nextElement), ms);
       }
     }
     #sortAscending(a, b) {
@@ -85,7 +98,7 @@
       if (a.value > b.value) return 1;
       return 0; // if equal
     }
-    #sortAndFilter() {
+    #sortAndFilter(nextElement = null) {
       // sort
       let itemsSorted;
       if (this.sortBy.order == 'initial') {
@@ -119,12 +132,13 @@
         }
         return true;
       });
-      this.#limit();
+      this.#limit(nextElement);
     }
     // public methods
     increaseLimit() {
+      let nextElement = this.limitBy + 1;
       this.limitBy += this.more;
-      this.#limit(true);
+      this.#limit(nextElement, true);
     }
     setFilter(trigger) {
       // set active class for buttons
@@ -136,7 +150,7 @@
       } else {
         this.filters[trigger.tag] = trigger.tagValue;
       }
-      this.#sortAndFilter();
+      this.#sortAndFilter(1);
     }
     setSort(trigger) {
       // set active class for buttons
@@ -146,7 +160,7 @@
       }
       // set sort
       this.sortBy = trigger.tagValue;
-      this.#sortAndFilter();
+      this.#sortAndFilter(1);
     }
     reset() {
       this.filters = { ...this.init.filters };
