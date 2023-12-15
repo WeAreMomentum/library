@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V3.7](#v37)
     - [V3.6](#v36)
     - [V3.5](#v35)
     - [V3.4](#v34)
@@ -43,6 +44,8 @@ function toggleArrayItem(array, item) {
 -->
 
 ## Change log
+### V3.7
+Bugfix: trigger reset for select elements with first option is empty value
 ### V3.6
 Accessibility: Focus on first new element after triggering filter.
 ### V3.5

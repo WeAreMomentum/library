@@ -1,4 +1,4 @@
-// Filter V 3.6
+// Filter V 3.7
 // by Aleksander Knöbl
 
 (function () {
@@ -184,9 +184,10 @@
       this.function = this.element.dataset.filterFunction;
       // this.reset
       this.event == 'click' && this.element.value ? this.reset = this.resetDeactive.bind(this)
-        : this.function == 'filter' && this.element.value == '' && this.element.tagName != 'INPUT' ? this.reset = this.resetActive.bind(this)
-          : this.element.tagName == 'SELECT' ? this.reset = this.resetSelect.bind(this)
-            : this.reset = this.resetValue.bind(this);
+        : this.element.tagName == 'SELECT' ? this.reset = this.resetSelect.bind(this)
+          : this.function == 'reset' ? this.reset = function() {}
+            : this.function == 'filter' && this.element.value == '' && this.element.tagName != 'INPUT' ? this.reset = this.resetActive.bind(this)
+              : this.reset = this.resetValue.bind(this);
       switch (this.function) {
         case 'reset':
           this.element.addEventListener('click', this.group.reset);
