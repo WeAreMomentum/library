@@ -1,56 +1,37 @@
-// No Scroll V 0.2
+// No Scroll V 0.3
 // by Aleksander Knöbl
 
-(function(){
+(function () {
 
-  document.querySelectorAll('[data-no-scroll]').forEach(trigger => {
-    const options = {
-      bpDown: trigger.dataset.noScrollBreakpointDown,
-      bpUp: trigger.dataset.noScrollBreakpointUp,
-    };
-    function initiate(e) {
-      if (e.matches) {
-        // add trigger
-        if (trigger.dataset.noScroll == 'toggle') {
-          trigger.addEventListener('click', function() {
-            document.documentElement.classList.toggle('no-scroll');
-          });
-        } else if (trigger.dataset.noScroll == 'on') {
-          trigger.addEventListener('click', function() {
-            document.documentElement.classList.add('no-scroll');
-          });
-        } else if (trigger.dataset.noScroll == 'off') {
-          trigger.addEventListener('click', function() {
-            document.documentElement.classList.remove('no-scroll');
-          });
-        }
+  class NoScrollTrigger {
+    constructor(htmlElement) {
+      this.element = htmlElement;
+      const noScroll = this.element.dataset.noScroll;
+      this.classMethod = noScroll == 'on' ? 'add'
+        : noScroll == 'off' ? 'remove'
+          : 'toggle';
+      const bpDown = this.element.dataset.noScrollBreakpointDown || null;
+      const bpUp = this.element.dataset.noScrollBreakpointUp || null;
+      const media = (bpDown ? '(max-width:' + bpDown + 'px)' : '') + (bpDown && bpUp ? ' and ' : '') + (bpUp ? '(min-width:' + bpUp + 'px)' : '');
+      this.mediaQueryList = window.matchMedia(media);
+
+      this.setNoScroll = this.setNoScroll.bind(this);
+      this.initiate = this.initiate.bind(this);
+      this.initiate(this.mediaQueryList);
+      this.mediaQueryList.addEventListener("change", this.initiate);
+    }
+    setNoScroll() {
+      document.documentElement.classList[this.classMethod]('no-scroll');
+    }
+    initiate(mql) {
+      if (mql.matches) {
+        this.element.addEventListener('click', this.setNoScroll);
       } else {
-        // remove trigger
-        if (trigger.dataset.noScroll == 'toggle') {
-          trigger.removeEventListener('click', function() {
-            document.documentElement.classList.toggle('no-scroll');
-          });
-        } else if (trigger.dataset.noScroll == 'on') {
-          trigger.removeEventListener('click', function() {
-            document.documentElement.classList.add('no-scroll');
-          });
-        } else if (trigger.dataset.noScroll == 'off') {
-          trigger.removeEventListener('click', function() {
-            document.documentElement.classList.remove('no-scroll');
-          });
-        }
+        this.element.removeEventListener('click', this.setNoScroll);
       }
     }
-    let mediaQueryList = window.matchMedia('');
-    if (options.bpDown && options.bpUp) {
-      mediaQueryList = window.matchMedia('(max-width:' + options.bpDown +'px) and (min-width:' + options.bpUp + 'px)');
-    } else if (options.bpDown) {
-      mediaQueryList = window.matchMedia('(max-width:' + options.bpDown + 'px)');
-    } else if (options.bpUp) {
-      mediaQueryList = window.matchMedia('(min-width:' + options.bpUp + 'px)');
-    }
-    mediaQueryList.addListener(initiate);
-    initiate(mediaQueryList);
-  });
+  }
+
+  document.querySelectorAll('[data-no-scroll]').forEach(elem => new NoScrollTrigger(elem));
 
 })();

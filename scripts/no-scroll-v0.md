@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V0.3](#v03)
     - [V0.2](#v02)
 
 ## Description
@@ -17,6 +18,8 @@ Add these attributes to the trigger if you want to override the defaults
 
 ## To-Dos
 
-## Change log
+## Change 
+### V0.3
+Replaced deprecated MediaQueryList method and changed to class oriented code.
 ### V0.2
 First upload on GitHub
