@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V2.2](#v22)
     - [V2.1](#v21)
     - [V2.0](#v20)
 
@@ -16,6 +17,8 @@ A click on a trigger rotates the element, so it shows it's backside. A second cl
 ## To-Dos
 
 ## Change log
+### V2.2
+Added attribute "aria-pressed".
 ### V2.1
 Removed unused variable declarations.
 ### V2.0
