@@ -13,13 +13,13 @@
     }
     showFront() {
       this.element.style.transform = 'perspective(1000px) rotateY(0deg)';
-      this.element.ariaPressed = "true";
+      this.element.ariaPressed = "false";
       this.element.removeEventListener('click', this.showFront);
       this.element.addEventListener('click', this.showBack);
     }
     showBack() {
       this.element.style.transform = 'perspective(1000px) rotateY(180deg)';
-      this.element.ariaPressed = "false";
+      this.element.ariaPressed = "true";
       this.element.removeEventListener('click', this.showBack);
       this.element.addEventListener('click', this.showFront);
     }
