@@ -1,4 +1,4 @@
-// Filter V 3.7
+// Filter V 3.8
 // by Aleksander Knöbl
 
 (function () {
@@ -263,7 +263,10 @@
     }
     show() {
       this.element.classList.remove('filter-hidden');
-      setTimeout(() => this.element.style = 'transform: translateY(0vh); opacity: 1;', 10);
+      setTimeout(() => {
+        this.element.style = 'transform: translateY(0vh); opacity: 1;';
+        setTimeout(() => this.element.removeAttribute('style'), ms);
+      }, 10);
     }
   }
 
