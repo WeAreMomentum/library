@@ -101,7 +101,7 @@ html.no-scroll,
 html.popup-open {
   overflow: hidden !important;
 }
-[data-accordion="accordion"] {
+[data-accordion="trigger"] {
   cursor: pointer;
 }
 [data-accordion="content"] {
