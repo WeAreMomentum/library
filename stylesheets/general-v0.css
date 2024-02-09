@@ -45,6 +45,9 @@ iframe {
   height: 100%;
   border: none;
 }
+input, select {
+  border-color: currentColor;
+}
 
 /* Webflow */
 .w-embed::before, .w-embed::after,
