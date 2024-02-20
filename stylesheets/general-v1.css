@@ -6,8 +6,6 @@
 }
 html {
   height: 100%;
-  overflow-x: hidden !important;
-  overflow-y: auto;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-synthesis: none;
@@ -15,7 +13,6 @@ html {
 }
 body {
   position: relative;
-  overflow-x: hidden;
 }
 h1, h2, h3, h4, a, p, blockquote,
 button, input, label, option, select, textarea,
@@ -88,14 +85,11 @@ input, select {
   height: auto;
   flex-shrink: 0;
 }
-/*
-.w-file-upload-label, .w-file-upload-file-name, .w-file-upload-uploading-btn {
-  font: inherit;
-  color: inherit;
-}
-*/
 
 /* Custom */
+.h-wrapper {
+  overflow-x: hidden;
+}
 .hidden,
 .filter-hidden,
 .weglot-hidden {
