@@ -1,4 +1,4 @@
-/* General V 0.7 */
+/* General V 0.8 */
 /* by Aleksander Knöbl */
 
 * {
@@ -17,7 +17,7 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-h1, h2, h3, h4, a, p, blockquote,
+h1, h2, h3, h4, h5, h6, a, p, blockquote,
 button, input, label, option, select, textarea,
 *::before, *::after {
   font: inherit;
@@ -36,7 +36,7 @@ img, picture, video, canvas, svg {
 img {
   max-width: none;
 }
-p, h1, h2, h3, h4 {
+p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 iframe {
