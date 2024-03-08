@@ -1,4 +1,4 @@
-// Accordion V 3.2
+// Accordion V 3.3
 // by Aleksander Knöbl
 
 (function () {
@@ -9,10 +9,13 @@
       this.accordions = [];
       this.closeAllTriggers = [];
       this.options = {
-        openAll: ((this.element.dataset.accordionInitAll || 'false') === 'true') || (this.element.dataset.accordionOpenAll || 'false') === 'true',
+        openAll: (this.element.dataset.accordionOpenAll || 'false') === 'true',
         initFirst: (this.element.dataset.accordionInitFirst || 'false') === 'true',
-        initAll: (this.element.dataset.accordionInitAll || 'false') === 'true'
+        initAll: (this.element.dataset.accordionInitAll || 'false') === 'true',
+        sync: (this.element.dataset.accordionSync || 'false') === 'true'
       }
+      this.options.openAll = this.options.openAll || this.options.initAll || this.options.sync;
+      if (this.options.sync) this.options.initFirst = false;
       this.element.querySelectorAll('[data-accordion="accordion"]').forEach(elem => {
         this.accordions.push(new Accordion(elem, this));
       });
@@ -38,13 +41,20 @@
       this.element.classList.remove('active');
       this.content.style.maxHeight = '0px';
     }
+    open() {
+      this.element.classList.add('active');
+      this.content.style.maxHeight = this.content.scrollHeight + 'px';
+    }
     toggle() {
-      if (!this.group.options.openAll) {
-        this.group.accordions.filter(elem => elem != this).forEach(elem => elem.close());
+      if (this.group.options.sync) {
+        this.element.classList.contains('active') ? this.group.accordions.forEach(elem => elem.close())
+         : this.group.accordions.forEach(elem => elem.open());
+      } else {
+        this.element.classList.contains('active') ? this.close() : this.open();
+        if (!this.group.options.openAll) {
+          this.group.accordions.filter(elem => elem != this).forEach(elem => elem.close());
+        }
       }
-      this.element.classList.toggle('active');
-      this.content.style.maxHeight == '0px' ? this.content.style.maxHeight = this.content.scrollHeight + 'px'
-        : this.content.style.maxHeight = '0px';
     }
   }
 

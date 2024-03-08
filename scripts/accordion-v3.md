@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V3.3](#v33)
     - [V3.2](#v32)
     - [V3.1](#v31)
     - [V3.0](#v30)
@@ -21,10 +22,13 @@ Add these attributes to the group if you want to override the defaults
 - `[data-accordion-open-all="false"]` - close all other accordions in the same group, when one is opened
 - `[data-accordion-init-first="false"]` - if true: first accordion in the group is opened on page load
 - `[data-accordion-init-all="false"]` - if true: all accordions in the group are opened on page load (overrules OpenAll and InitFirst)
+- `[data-accordion-sync="false"]` - if true: all accordions in the group are synchronized (overrules OpenAll and InitFirst)
 
 ## To-Dos
 
 ## Change log
+### V3.3
+Added Sync functionality.
 ### V3.2
 Added InitAll functionality.
 ### V3.1
