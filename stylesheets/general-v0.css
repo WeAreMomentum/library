@@ -1,4 +1,4 @@
-/* General V 0.8 */
+/* General V 0.9 */
 /* by Aleksander Knöbl */
 
 * {
@@ -15,7 +15,6 @@ html {
 }
 body {
   position: relative;
-  overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6, a, p, blockquote,
 button, input, label, option, select, textarea,
