@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V3.9](#v39)
     - [V3.8](#v38)
     - [V3.7](#v37)
     - [V3.6](#v36)
@@ -29,7 +30,7 @@ There are various types of triggers possible, function="filter" and function="so
     - `[data-filter="empty-state"]` - this is shown if no item matches the current settings
     - `[data-filter="trigger"][data-filter-function="more"]` - optional; loads more elements
 ### Options defaults:
-Add these attributes to the wrapper if you want to override the defaults
+Add these attributes to the group if you want to override the defaults
 - `[data-filter-sort=""]` - "{'order':'random'}" or "{'order':'initial'}" or "{'tag':'','order':''}" with 'order': '+', '-'; Note: Webflow only allows ' to be used in Custom Attributes
 - `[data-filter-limit=""]` - the number of items to show by default
 - `[data-filter-more=""]` - the number of items to add on a click on the more-button
@@ -45,6 +46,8 @@ function toggleArrayItem(array, item) {
 -->
 
 ## Change log
+### V3.9
+Bugfix: check if there are items to focus before focus.
 ### V3.8
 Bugfix: remove style attribute after animation to prevent crating a new stacking order.
 ### V3.7

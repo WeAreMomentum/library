@@ -1,4 +1,4 @@
-// Filter V 3.8
+// Filter V 3.9
 // by Aleksander Knöbl
 
 (function () {
@@ -65,7 +65,7 @@
         this.listWrapper.style.height = 'auto', 10 + ms;
         if (nextElement) {
           const focusables = getKeyboardFocusableElements(this.list.children[nextElement - 1]);
-          focusables[0].focus();
+          if (focusables.length > 0) focusables[0].focus();
         }
       });
     }
