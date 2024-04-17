@@ -1,4 +1,8 @@
+// HCI Saison
+// by Aleksander Knöbl
+
 (function () {
+
   const referer = window.location.origin;
   const divisionId = "ice";
   const teamId = 190;
@@ -220,4 +224,5 @@
       console.log(`Error: ${xhr.status}`);
     }
   };
+
 })();
