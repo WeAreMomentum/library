@@ -69,6 +69,15 @@
       if (game) {
         const gameData = game;
         const gameDom = wrapper.querySelector('.api__next_game');
+        gameDom.querySelector('.api__home_team_logo').src = gameData.homeTeamLogoUrl;
+        gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
+        gameDom.querySelector('.api__opponent_name').textContent =
+          gameData.homeTeamId == teamId ? gameData.awayTeamLongName : gameData.homeTeamLongName;
+        const scheduledDate = new Date(gameData.scheduledDate.longValue || gameData.scheduledDate.formattedLong);
+        const dateOptions = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+        gameDom.querySelector('.api__scheduled_date').textContent = scheduledDate.toLocaleDateString("de-AT", options);
+        gameDom.querySelector('.api__scheduled_time').textContent = gameData.scheduledTime + ' Uhr';
+        gameDom.querySelector('.api__location').textContent = gameData.location.longname;
 
         /*
         const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
