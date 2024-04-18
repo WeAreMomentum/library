@@ -40,7 +40,7 @@
           const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
             "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
             "&referer=" + referer +
-            "&gameId=" + game.id;
+            "&gameId=" + liveGame.id;
           const xhr2 = new XMLHttpRequest();
           xhr2.open("GET", reqURL2);
           xhr2.send();
