@@ -28,9 +28,57 @@
       let game = gameList[1];
 
       if (game) {
-        const gameData = game;
-        const gameDom = wrapper.querySelector('.api__live_game');
-
+        const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
+          "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
+          "&referer=" + referer +
+          "&gameId=" + game.id;
+        const xhr2 = new XMLHttpRequest();
+        xhr2.open("GET", reqURL2);
+        xhr2.send();
+        xhr2.responseType = "json";
+        xhr2.onload = () => {
+          if (xhr2.readyState == 4 && xhr2.status == 200) {
+            const gameData = xhr2.response.data.gameData;
+            const gameDom = wrapper.querySelector('.api__live_game');
+            if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
+            if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
+            gameDom.querySelector('.api__opponent_name').textContent =
+              gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
+            gameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
+            gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
+            gameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
+            gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
+            let periodResults = '';
+            gameData.periodStats.forEach((period, i) => {
+              periodResults += period.homeScore + ':' + period.awayScore;
+              periodResults += (i + 1) < gameData.periodStats.length ? ' | ' : '';
+            });
+            gameDom.querySelector('.api__period_results').textContent = periodResults;
+            gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
+            if (gameData.gameOfficials) {
+              gameDom.querySelector('.api__refs').textContent =
+                gameData.gameOfficials.ref1.firstname + ' ' +
+                gameData.gameOfficials.ref1.lastname + ', ' +
+                gameData.gameOfficials.ref2.firstname + ' ' +
+                gameData.gameOfficials.ref2.lastname;
+              gameDom.querySelector('.api__linesmen').textContent =
+                gameData.gameOfficials.linesman1.firstname + ' ' +
+                gameData.gameOfficials.linesman1.lastname + ', ' +
+                gameData.gameOfficials.linesman2.firstname + ' ' +
+                gameData.gameOfficials.linesman2.lastname;
+            }
+            const scheduledDate = new Date(gameData.scheduledDate.longValue || gameData.scheduledDate.formattedLong);
+            const dateOptions = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+            gameDom.querySelector('.api__date_and_time').textContent =
+              scheduledDate.toLocaleDateString("de-AT", dateOptions) + ' | ' +
+              gameData.scheduledTime + ' Uhr';
+            gameDom.querySelector('.api__location').textContent = gameData.location.longname;
+            gameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
+            gameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
+          } else {
+            console.log(`Error: ${xhr2.status}`);
+          }
+        };
       } else {
         gameDom.style.display = 'none';
       }
@@ -78,41 +126,6 @@
         gameDom.querySelector('.api__scheduled_date').textContent = scheduledDate.toLocaleDateString("de-AT", dateOptions);
         gameDom.querySelector('.api__scheduled_time').textContent = gameData.scheduledTime + ' Uhr';
         gameDom.querySelector('.api__location').textContent = gameData.location.longname;
-
-        /*
-        const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
-          "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
-          "&referer=" + referer +
-          "&gameId=" + game.id;
-        const xhr2 = new XMLHttpRequest();
-        xhr2.open("GET", reqURL2);
-        xhr2.send();
-        xhr2.responseType = "json";
-        xhr2.onload = () => {
-          if (xhr2.readyState == 4 && xhr2.status == 200) {
-            const gameData = xhr2.response.data.gameData;
-            const gameDom = wrapper.querySelector('.api__last_game');
-            if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
-            if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
-            gameDom.querySelector('.api__opponent_name').textContent =
-              gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
-            gameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
-            gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
-            gameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
-            gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
-            gameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
-            gameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
-            const scheduledDate = new Date(gameData.scheduledDate.longValue || gameData.scheduledDate.formattedLong);
-            const dateOptions = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
-            gameDom.querySelector('.api__date_and_time').textContent =
-              scheduledDate.toLocaleDateString("de-AT", dateOptions) + ' | ' +
-              gameData.scheduledTime + ' Uhr';
-            gameDom.querySelector('.api__location').textContent = gameData.location.longname;
-          } else {
-            console.log(`Error: ${xhr2.status}`);
-          }
-        };
-        */
       } else {
 
       }
@@ -125,41 +138,6 @@
           return (game.homeTeamId == teamId || game.awayTeamId == teamId);// && game.gameStatus == gameStatus;
         });
         if (gameList.length > 0) {
-          let singleGame;
-          if (tabName == 'spielplan') {
-            singleGame = gameList.shift();
-          } else {
-            singleGame = gameList.pop();
-            gameList.reverse();
-          }
-          const gameListDom = tabDom.querySelector('.api__game_list');
-          const gameDom = gameListDom.querySelector('.api__game');
-          gameList.forEach(game => {
-            const newGameDom = gameDom.cloneNode(true);
-            gameListDom.appendChild(newGameDom);
-            newGameDom.querySelector('[data-filter="tag"][data-filter-tag="location"]').textContent =
-              game.homeTeamId == teamId ? 'home' :
-                game.awayTeamId == teamId ? 'away' : '';
-            newGameDom.querySelector('.api__location').textContent = game.location.longname;
-            const scheduledDate = new Date(game.scheduledDate.longValue || game.scheduledDate.formattedLong);
-            const dateOptions = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
-            newGameDom.querySelector('.api__date_and_time').textContent =
-              scheduledDate.toLocaleDateString("de-AT", dateOptions) + ' | ' +
-              game.scheduledTime + ' Uhr';
-            newGameDom.querySelector('.api__home_team_long_name').textContent = game.homeTeamLongName;
-            newGameDom.querySelector('.api__away_team_long_name').textContent = game.awayTeamLongName;
-            newGameDom.querySelector('.api__home_team_logo').src = game.homeTeamLogoUrl;
-            newGameDom.querySelector('.api__away_team_logo').src = game.awayTeamLogoUrl;
-            if (game.gameStatus == 4) {
-              if (game.homeTeamId == teamId) newGameDom.classList.add('game-item--home');
-              if (game.awayTeamId == teamId) newGameDom.classList.add('game-item--away');
-              newGameDom.querySelector('.api__home_team_score').textContent = game.homeTeamScore;
-              newGameDom.querySelector('.api__away_team_score').textContent = game.awayTeamScore;
-              newGameDom.querySelector('.api__is_overtime').style.display = game.isOvertime ? 'block' : 'none';
-              newGameDom.querySelector('.api__is_shoot_out').style.display = game.isShootOut ? 'block' : 'none';
-            }
-          });
-          gameDom.remove();
           const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
             "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
             "&referer=" + referer +
