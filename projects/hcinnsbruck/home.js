@@ -16,12 +16,10 @@
   xhr.responseType = "json";
   xhr.onload = () => {
     if (xhr.readyState == 4 && xhr.status == 200) {
-
       const wrapper = document.querySelector('.api__games');
       let gameList = xhr.response.data.rows.filter(game => {
         return (game.homeTeamId == teamId || game.awayTeamId == teamId);
       });
-      console.log(gameList);
 
       /* Live */
 
@@ -39,6 +37,7 @@
         xhr2.onload = () => {
           if (xhr2.readyState == 4 && xhr2.status == 200) {
             const gameData = xhr2.response.data.gameData;
+            console.log(gameData);
             const gameDom = wrapper.querySelector('.api__live_game');
             if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
             if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
@@ -55,8 +54,8 @@
             });
             gameDom.querySelector('.api__period_results').textContent = periodResults;
             const hours = Math.floor(gameData.liveTime / 3600);
-            const minutes = Math.floor((gameData.liveTime % 3600) / 60);
-            const seconds = gameData.liveTime % 60;
+            const minutes = ("00" + Math.floor((gameData.liveTime % 3600) / 60)).slice(-2);
+            const seconds = ("00" + gameData.liveTime % 60).slice(-2);
             gameDom.querySelector('.api__live_time').textContent = hours + ':' + minutes + ':' + seconds;
             gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
             if (gameData.gameOfficials) {
