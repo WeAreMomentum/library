@@ -44,11 +44,11 @@
         const gameDom = wrapper.querySelector('.api__last_game');
         if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
         if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
-        gameDom.querySelector('.api__opponent_name').textContent =
-          gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
-        gameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
+        gameDom.querySelector('.api__opponent_name').textContent = gameData.homeTeamId == teamId ?
+          gameData.awayTeamLongname : gameData.homeTeamLongname;
+        gameDom.querySelector('.api__home_team_logo').src = gameData.homeTeamLogoUrl;
         gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
-        gameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
+        gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
         gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
         gameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
         gameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
