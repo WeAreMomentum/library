@@ -25,15 +25,66 @@
 
       /* Live */
       let gameDom = wrapper.querySelector('.api__live_game');
-      
+
+      let game = gameList[1];
+
+      if (game) {
+
+      } else {
+        gameDom.style.display = 'none';
+      }
+
       /* letztes Spiel */
       gameDom = wrapper.querySelector('.api__last_game');
+
+      game = gameList[0];
+
+      if (game) {
+        const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
+          "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
+          "&referer=" + referer +
+          "&gameId=" + game.id;
+        const xhr2 = new XMLHttpRequest();
+        xhr2.open("GET", reqURL2);
+        xhr2.send();
+        xhr2.responseType = "json";
+        xhr2.onload = () => {
+          if (xhr2.readyState == 4 && xhr2.status == 200) {
+            const gameData = xhr2.response.data.gameData;
+            if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
+            if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
+            gameDom.querySelector('.api__opponent_name').textContent =
+              gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
+            gameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
+            gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
+            gameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
+            gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
+            gameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
+            gameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
+            const scheduledDate = new Date(gameData.scheduledDate.longValue || gameData.scheduledDate.formattedLong);
+            const dateOptions = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
+            gameDom.querySelector('.api__date_and_time').textContent =
+              scheduledDate.toLocaleDateString("de-AT", dateOptions) + ' | ' +
+              gameData.scheduledTime + ' Uhr';
+            gameDom.querySelector('.api__location').textContent = gameData.location.longname;
+          } else {
+            console.log(`Error: ${xhr2.status}`);
+          }
+        };
+      } else {
+
+      }
 
       /* nächstes Spiel */
       gameDom = wrapper.querySelector('.api__next_game');
 
+      game = gameList[2];
 
+      if (game) {
 
+      } else {
+
+      }
 
       /* Ergebnisse / Spielplan
       ['ergebnisse', 'spielplan'].forEach(tabName => {
@@ -89,18 +140,18 @@
           xhr2.onload = () => {
             if (xhr2.readyState == 4 && xhr2.status == 200) {
               const gameData = xhr2.response.data.gameData;
-              const singleGameDom = tabDom.querySelector('.api__single_game');
-              singleGameDom.querySelector('.api__opponent_name').textContent =
+              const gameDom = tabDom.querySelector('.api__single_game');
+              gameDom.querySelector('.api__opponent_name').textContent =
                 gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
-              singleGameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
-              singleGameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
+              gameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
+              gameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
               if (gameData.gameOfficials) {
-                singleGameDom.querySelector('.api__refs').textContent =
+                gameDom.querySelector('.api__refs').textContent =
                   gameData.gameOfficials.ref1.firstname + ' ' +
                   gameData.gameOfficials.ref1.lastname + ', ' +
                   gameData.gameOfficials.ref2.firstname + ' ' +
                   gameData.gameOfficials.ref2.lastname;
-                singleGameDom.querySelector('.api__linesmen').textContent =
+                gameDom.querySelector('.api__linesmen').textContent =
                   gameData.gameOfficials.linesman1.firstname + ' ' +
                   gameData.gameOfficials.linesman1.lastname + ', ' +
                   gameData.gameOfficials.linesman2.firstname + ' ' +
@@ -108,24 +159,24 @@
               }
               const scheduledDate = new Date(gameData.scheduledDate.longValue || gameData.scheduledDate.formattedLong);
               const options = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
-              singleGameDom.querySelector('.api__scheduled_date').textContent = scheduledDate.toLocaleDateString("de-AT", options);
-              singleGameDom.querySelector('.api__time_and_location').textContent =
+              gameDom.querySelector('.api__scheduled_date').textContent = scheduledDate.toLocaleDateString("de-AT", options);
+              gameDom.querySelector('.api__time_and_location').textContent =
                 gameData.scheduledTime + ' Uhr, ' +
                 gameData.location.longname;
               if (tabName == 'ergebnisse') {
-                if (gameData.homeTeamId == teamId) singleGameDom.classList.add('single-game--home');
-                if (gameData.awayTeamId == teamId) singleGameDom.classList.add('single-game--away');
-                singleGameDom.querySelector('.api__attendance').textContent = gameData.attendance;
-                singleGameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
-                singleGameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
+                if (gameData.homeTeamId == teamId) gameDom.classList.add('single-game--home');
+                if (gameData.awayTeamId == teamId) gameDom.classList.add('single-game--away');
+                gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
+                gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
+                gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
                 let periodResults = '';
                 gameData.periodStats.forEach((period, i) => {
                   periodResults += period.homeScore + ':' + period.awayScore;
                   periodResults += (i + 1) < gameData.periodStats.length ? ' | ' : '';
                 });
-                singleGameDom.querySelector('.api__period_results').textContent = periodResults;
-                singleGameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
-                singleGameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
+                gameDom.querySelector('.api__period_results').textContent = periodResults;
+                gameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
+                gameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
               }
             } else {
               console.log(`Error: ${xhr2.status}`);
