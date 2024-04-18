@@ -43,9 +43,9 @@
             if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
             gameDom.querySelector('.api__opponent_name').textContent =
               gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
-            gameDom.querySelector('.api__home_team_logo').src = gameData.images.homeTeamLogo;
+            gameDom.querySelector('.api__home_team_logo').src = gameData.homeTeamLogourl;
             gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
-            gameDom.querySelector('.api__away_team_logo').src = gameData.images.awayTeamLogo;
+            gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
             gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
             let periodResults = '';
             gameData.periodStats.forEach((period, i) => {
@@ -53,10 +53,7 @@
               periodResults += (i + 1) < gameData.periodStats.length ? ' | ' : '';
             });
             gameDom.querySelector('.api__period_results').textContent = periodResults;
-            const hours = Math.floor(gameData.liveTime / 3600);
-            const minutes = ("00" + Math.floor((gameData.liveTime % 3600) / 60)).slice(-2);
-            const seconds = ("00" + gameData.liveTime % 60).slice(-2);
-            gameDom.querySelector('.api__live_time').textContent = hours + ':' + minutes + ':' + seconds;
+            gameDom.querySelector('.api__live_time').textContent = gameData.liveTimeFormatted;
             gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
             if (gameData.gameOfficials) {
               gameDom.querySelector('.api__refs').textContent =
