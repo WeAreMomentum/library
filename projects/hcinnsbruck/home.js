@@ -44,8 +44,8 @@
         const gameDom = wrapper.querySelector('.api__last_game');
         if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
         if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
-        gameDom.querySelector('.api__opponent_name').textContent = gameData.homeTeamId == teamId ?
-          gameData.awayTeamLongname : gameData.homeTeamLongname;
+        gameDom.querySelector('.api__opponent_name').textContent =
+          gameData.homeTeamId == teamId ? gameData.awayTeamLongName : gameData.homeTeamLongName;
         gameDom.querySelector('.api__home_team_logo').src = gameData.homeTeamLogoUrl;
         gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
         gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
