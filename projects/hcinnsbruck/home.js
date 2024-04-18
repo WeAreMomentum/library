@@ -75,7 +75,7 @@
           gameData.homeTeamId == teamId ? gameData.awayTeamLongName : gameData.homeTeamLongName;
         const scheduledDate = new Date(gameData.scheduledDate.longValue || gameData.scheduledDate.formattedLong);
         const dateOptions = { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' };
-        gameDom.querySelector('.api__scheduled_date').textContent = scheduledDate.toLocaleDateString("de-AT", options);
+        gameDom.querySelector('.api__scheduled_date').textContent = scheduledDate.toLocaleDateString("de-AT", dateOptions);
         gameDom.querySelector('.api__scheduled_time').textContent = gameData.scheduledTime + ' Uhr';
         gameDom.querySelector('.api__location').textContent = gameData.location.longname;
 
