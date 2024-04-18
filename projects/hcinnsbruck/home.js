@@ -7,7 +7,6 @@
     return new Date(game.scheduledDate.longValue || game.scheduledDate.formattedLong)
   }
   function getDayDiff(date1, date2) {
-    console.log(date1, date2);
     return Math.round((date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 60));
   }
 
@@ -32,8 +31,8 @@
       const liveGame = gameList.find(game => game.gameStatus != 4 && game.gameStatus != 0);
       const nextGame = gameList.find(game => game.gameStatus == 0);
       const today = new Date();
-      const onlyLastGame = lastGame && getDayDiff(getGameDate(lastGame), today < 80);
-      const onlyNextGame = nextGame && getDayDiff(today, getGameDate(nextGame) < 7);
+      const onlyLastGame = lastGame && getDayDiff(getGameDate(lastGame), today) < 80;
+      const onlyNextGame = nextGame && getDayDiff(today, getGameDate(nextGame)) < 7;
       if ((lastGame && nextGame) || liveGame || onlyLastGame || onlyNextGame) {
 
         /* Live */
