@@ -27,11 +27,11 @@
       let gameList = xhr.response.data.rows.filter(game => {
         return (game.homeTeamId == teamId || game.awayTeamId == teamId);
       });
-      const lastGame = gameList.findLast(game => game.gameStatus == 4);
-      const liveGame = gameList.find(game => game.gameStatus != 4 && game.gameStatus != 0);
-      const nextGame = gameList.find(game => game.gameStatus == 0);
+      const lastGame = gameList[0];//.findLast(game => game.gameStatus == 4);
+      const liveGame = gameList[0];//.find(game => game.gameStatus != 4 && game.gameStatus != 0);
+      const nextGame = gameList[0];//.find(game => game.gameStatus == 0);
       const today = new Date();
-      const onlyLastGame = lastGame && getDayDiff(getGameDate(lastGame), today) < 80;
+      const onlyLastGame = lastGame && getDayDiff(getGameDate(lastGame), today) < 7;
       const onlyNextGame = nextGame && getDayDiff(today, getGameDate(nextGame)) < 7;
       if ((lastGame && nextGame) || liveGame || onlyLastGame || onlyNextGame) {
 
@@ -94,7 +94,7 @@
 
         /* letztes Spiel */
         if (lastGame) {
-          const gameData = game;
+          const gameData = lastGame;
           const gameDom = wrapper.querySelector('.api__last_game');
           if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
           if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
@@ -118,7 +118,7 @@
 
         /* nächstes Spiel */
         if (nextGame) {
-          const gameData = game;
+          const gameData = nextGame;
           const gameDom = wrapper.querySelector('.api__next_game');
           gameDom.querySelector('.api__home_team_logo').src = gameData.homeTeamLogoUrl;
           gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
