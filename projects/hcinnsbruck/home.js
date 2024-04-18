@@ -54,6 +54,10 @@
               periodResults += (i + 1) < gameData.periodStats.length ? ' | ' : '';
             });
             gameDom.querySelector('.api__period_results').textContent = periodResults;
+            const hours = Math.floor(gameData.liveTime / 3600);
+            const minutes = Math.floor((gameData.liveTime % 3600) / 60);
+            const seconds = gameData.liveTime % 60;
+            gameDom.querySelector('.api__live_time').textContent = hours + ':' + minutes + ':' + seconds;
             gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
             if (gameData.gameOfficials) {
               gameDom.querySelector('.api__refs').textContent =
