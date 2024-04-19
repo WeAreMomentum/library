@@ -37,7 +37,7 @@
 
         /* Live */
         if (liveGame) {
-          const interval = setInterval(() => {
+          function getLiveGameData() {
             const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
               "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
               "&referer=" + referer +
@@ -89,7 +89,9 @@
                 console.log(`Error: ${xhr2.status}`);
               }
             };
-          }, 20000);
+          }
+          const interval = setInterval(getLiveGameData, 20000);
+          getLiveGameData();
         } else {
           wrapper.querySelector('.api__live_game').style.display = 'none';
         }
