@@ -49,7 +49,6 @@
             xhr2.onload = () => {
               if (xhr2.readyState == 4 && xhr2.status == 200) {
                 const gameData = xhr2.response.data.gameData;
-                console.log(gameData);
                 const gameDom = wrapper.querySelector('.api__live_game');
                 gameDom.querySelector('.api__opponent_name').textContent =
                   gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
@@ -90,7 +89,7 @@
                 console.log(`Error: ${xhr2.status}`);
               }
             };
-          }, 500);
+          }, 20000);
         } else {
           wrapper.querySelector('.api__live_game').style.display = 'none';
         }
