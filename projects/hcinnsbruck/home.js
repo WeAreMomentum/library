@@ -48,9 +48,8 @@
           xhr2.onload = () => {
             if (xhr2.readyState == 4 && xhr2.status == 200) {
               const gameData = xhr2.response.data.gameData;
+              console.log(gameData);
               const gameDom = wrapper.querySelector('.api__live_game');
-              if (gameData.homeTeamId == teamId) gameDom.classList.add('home-game--home');
-              if (gameData.awayTeamId == teamId) gameDom.classList.add('home-game--away');
               gameDom.querySelector('.api__opponent_name').textContent =
                 gameData.homeTeamId == teamId ? gameData.awayTeamLongname : gameData.homeTeamLongname;
               gameDom.querySelector('.api__home_team_logo').src = gameData.homeTeamLogoUrl;
@@ -58,6 +57,7 @@
               gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
               gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
               let periodResults = '';
+
               gameData.periodStats.forEach((period, i) => {
                 periodResults += period.homeScore + ':' + period.awayScore;
                 periodResults += (i + 1) < gameData.periodStats.length ? ' | ' : '';
