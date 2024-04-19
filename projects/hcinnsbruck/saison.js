@@ -240,43 +240,28 @@
     if (xhr3.readyState == 4 && xhr3.status == 200) {
       const teamData = xhr3.response.data.teamData;
       const teamRoster = xhr3.response.data.teamRoster;
+      const teamStats = [...xhr3.response.data.playerStats, ...xhr3.response.data.goalkeeperStats];
       const teamTableDom = document.querySelector('.api__team_table');
       const tbodyDom = teamTableDom.querySelector('tbody');
       const trDom = tbodyDom.querySelector('tr');
-      trDom.remove();
-      teamRoster.forEach(player => {
-        const reqURL4 = "https://api.hockeydata.net/data/ih/GetPlayerDetails" +
-          "?apiKey=738aba5a0c15ea7da496e1cda6922ff1" +
-          "&referer=" + referer +
-          "&divisionId=" + divisionId +
-          "&playerId=" + player.id;
-        const xhr4 = new XMLHttpRequest();
-        xhr4.open("GET", reqURL4);
-        xhr4.send();
-        xhr4.responseType = "json";
-        xhr4.onload = () => {
-          if (xhr4.readyState == 4 && xhr4.status == 200) {
-            const playerData = xhr4.response.data.playerData;
-            const playerStats = xhr4.response.data.playerStats;
-            const newTrDom = trDom.cloneNode(true);
-            newTrDom.querySelector('.api__pos').textContent = '';
-            newTrDom.querySelector('.api__player_name').textContent = playerData.playerLastname + ' ' + playerData.playerFirstname;
-            newTrDom.querySelector('.api__team_logo img').src = teamData.images.teamLogo;
-            newTrDom.querySelector('.api__team_shortname').textContent = teamData.teamShortname;
-            newTrDom.querySelector('.api__player_jersey_nr').textContent = playerData.playerJerseyNr;
-            newTrDom.querySelector('.api__position').textContent = playerData.position;
-            newTrDom.querySelector('.api__games_played').textContent = playerStats.gamesPlayed;
-            newTrDom.querySelector('.api__goals').textContent = playerStats.goals;
-            newTrDom.querySelector('.api__assists').textContent = playerStats.assists;
-            newTrDom.querySelector('.api__points').textContent = playerStats.points;
-            newTrDom.querySelector('.api__plus_minus').textContent = playerStats.plusMinus;
-            newTrDom.querySelector('.api__pim').textContent = '';
-            tbodyDom.appendChild(newTrDom);
-          } else {
-            console.log(`Error: ${xhr3.status}`);
-          }
-        };
+      teamRoster.forEach(playerData => {
+        const playerStats = teamStats.find(player => player.id == playerData.id);
+        const newTrDom = trDom.cloneNode(true);
+        newTrDom.querySelector('.api__pos').textContent = '';
+        newTrDom.querySelector('.api__player_name').textContent = playerData.playerLastname + ' ' + playerData.playerFirstname;
+        newTrDom.querySelector('.api__team_logo img').src = teamData.images.teamLogo;
+        newTrDom.querySelector('.api__team_shortname').textContent = teamData.teamShortname;
+        newTrDom.querySelector('.api__player_jersey_nr').textContent = playerData.playerJerseyNr;
+        newTrDom.querySelector('.api__position').textContent = playerData.position;
+        newTrDom.querySelector('.api__games_played').textContent = playerStats.gamesPlayed;
+        newTrDom.querySelector('.api__goals').textContent = playerStats.goals;
+        newTrDom.querySelector('.api__assists').textContent = playerStats.assists;
+        newTrDom.querySelector('.api__points').textContent = playerStats.points;
+        newTrDom.querySelector('.api__plus_minus').textContent = playerStats.plusMinus;
+        newTrDom.querySelector('.api__pim').textContent = '';
+        tbodyDom.appendChild(newTrDom);
       });
+      trDom.remove();
     } else {
       console.log(`Error: ${xhr3.status}`);
     }
