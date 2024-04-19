@@ -65,7 +65,6 @@
                 i++;
                 console.log(gameData.periodStats[i].period, gameData.liveTimePeriod, gameData.periodStats[i].period != gameData.liveTimePeriod);
               }
-              i++;
               periodResults += '<span style="color:var(--red);">' + gameData.periodStats[i].homeScore + ':' + gameData.periodStats[i].awayScore + '</span>';
               gameDom.querySelector('.api__period_results').innerHTML = periodResults;
               gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
