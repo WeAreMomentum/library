@@ -60,7 +60,7 @@
               let periodResults = '';
               let i = 0;
               while (gameData.periodStats[i].period != gameData.liveTimePeriod) {
-                periodResults += period.homeScore + ':' + period.awayScore + ' | ';
+                periodResults += gameData.periodStats[i].homeScore + ':' + gameData.periodStats[i].awayScore + ' | ';
                 i++;
               }
               i++;
