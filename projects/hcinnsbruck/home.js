@@ -59,9 +59,11 @@
               gameDom.querySelector('.api__live_time').textContent = Math.floor(gameData.liveTime / 60) + "'";
               let periodResults = '';
               let i = 0;
+              console.log(gameData.periodStats[i].period, gameData.liveTimePeriod, gameData.periodStats[i].period != gameData.liveTimePeriod);
               while (gameData.periodStats[i].period != gameData.liveTimePeriod) {
                 periodResults += gameData.periodStats[i].homeScore + ':' + gameData.periodStats[i].awayScore + ' | ';
                 i++;
+                console.log(gameData.periodStats[i].period, gameData.liveTimePeriod, gameData.periodStats[i].period != gameData.liveTimePeriod);
               }
               i++;
               periodResults += '<span style="color:var(--red);">' + gameData.periodStats[i].homeScore + ':' + gameData.periodStats[i].awayScore + '</span>';
