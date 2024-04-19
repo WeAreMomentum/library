@@ -256,8 +256,8 @@
         xhr4.responseType = "json";
         xhr4.onload = () => {
           if (xhr4.readyState == 4 && xhr4.status == 200) {
-            const playerData = xhr3.response.data.playerData;
-            const playerStats = xhr3.response.data.playerStats;
+            const playerData = xhr4.response.data.playerData;
+            const playerStats = xhr4.response.data.playerStats;
             const newTrDom = trDom.cloneNode(true);
             newTrDom.querySelector('.api__pos').textContent = '';
             newTrDom.querySelector('.api__player_name').textContent = playerData.playerLastname + ' ' + playerData.playerFirstname;
