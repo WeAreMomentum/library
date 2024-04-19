@@ -239,13 +239,11 @@
   xhr3.onload = () => {
     if (xhr3.readyState == 4 && xhr3.status == 200) {
       const teamData = xhr3.response.data.teamData;
-      const teamRoster = xhr3.response.data.teamRoster;
-      const teamStats = [...xhr3.response.data.playerStats, ...xhr3.response.data.goalkeeperStats];
+      const playerStats = xhr3.response.data.playerStats;
       const teamTableDom = document.querySelector('.api__team_table');
       const tbodyDom = teamTableDom.querySelector('tbody');
       const trDom = tbodyDom.querySelector('tr');
-      teamRoster.forEach(playerData => {
-        const playerStats = teamStats.find(player => player.id == playerData.id);
+      playerStats.forEach(playerData => {
         const newTrDom = trDom.cloneNode(true);
         newTrDom.querySelector('.api__pos').textContent = '';
         newTrDom.querySelector('.api__player_name').textContent = playerData.playerLastname + ' ' + playerData.playerFirstname;
@@ -253,11 +251,11 @@
         newTrDom.querySelector('.api__team_shortname').textContent = teamData.teamShortname;
         newTrDom.querySelector('.api__player_jersey_nr').textContent = playerData.playerJerseyNr;
         newTrDom.querySelector('.api__position').textContent = playerData.position;
-        newTrDom.querySelector('.api__games_played').textContent = playerStats.gamesPlayed;
-        newTrDom.querySelector('.api__goals').textContent = playerStats.goals;
-        newTrDom.querySelector('.api__assists').textContent = playerStats.assists;
-        newTrDom.querySelector('.api__points').textContent = playerStats.points;
-        newTrDom.querySelector('.api__plus_minus').textContent = playerStats.plusMinus;
+        newTrDom.querySelector('.api__games_played').textContent = playerData.gamesPlayed;
+        newTrDom.querySelector('.api__goals').textContent = playerData.goals;
+        newTrDom.querySelector('.api__assists').textContent = playerData.assists;
+        newTrDom.querySelector('.api__points').textContent = playerData.points;
+        newTrDom.querySelector('.api__plus_minus').textContent = playerData.plusMinus;
         newTrDom.querySelector('.api__pim').textContent = '';
         tbodyDom.appendChild(newTrDom);
       });
