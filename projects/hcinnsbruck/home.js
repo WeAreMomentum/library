@@ -64,7 +64,7 @@
                 i++;
               }
               i++;
-              periodResults += '<span style="color:var(--red);">' + period.homeScore + ':' + period.awayScore + '</span>';
+              periodResults += '<span style="color:var(--red);">' + gameData.periodStats[i].homeScore + ':' + gameData.periodStats[i].awayScore + '</span>';
               gameDom.querySelector('.api__period_results').innerHTML = periodResults;
               gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
               if (gameData.gameOfficials) {
