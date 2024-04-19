@@ -56,14 +56,16 @@
               gameDom.querySelector('.api__home_team_score').textContent = gameData.homeTeamScore;
               gameDom.querySelector('.api__away_team_logo').src = gameData.awayTeamLogoUrl;
               gameDom.querySelector('.api__away_team_score').textContent = gameData.awayTeamScore;
+              gameDom.querySelector('.api__live_time').textContent = Math.floor(gameData.liveTime / 60) + "'";
               let periodResults = '';
-
-              gameData.periodStats.forEach((period, i) => {
-                periodResults += period.homeScore + ':' + period.awayScore;
-                periodResults += (i + 1) < gameData.periodStats.length ? ' | ' : '';
-              });
-              gameDom.querySelector('.api__period_results').textContent = periodResults;
-              gameDom.querySelector('.api__live_time').textContent = gameData.liveTimeFormatted;
+              let i = 0;
+              while (gameData.periodStats[i].period != gameData.liveTimePeriod) {
+                periodResults += period.homeScore + ':' + period.awayScore + ' | ';
+                i++;
+              }
+              i++;
+              periodResults += '<span style="color:var(--red);">' + period.homeScore + ':' + period.awayScore + '</span>';
+              gameDom.querySelector('.api__period_results').innerHTML = periodResults;
               gameDom.querySelector('.api__attendance').textContent = gameData.attendance;
               if (gameData.gameOfficials) {
                 gameDom.querySelector('.api__refs').textContent =
