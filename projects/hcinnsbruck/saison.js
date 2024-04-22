@@ -164,7 +164,7 @@
         const gameListDays = Object.keys(gameList);
         let today = new Date();
         today.setHours(0, 0, 0, 0);
-        let currentDateString = gameListDays.find(DateString => new Date(DateString) >= today);
+        let currentDateString = gameListDays.find(DateString => new Date(DateString) >= today) || gameListDays[gameListDays.length - 1];
         let prevDateString = '';
         let nextDateString = '';
 
