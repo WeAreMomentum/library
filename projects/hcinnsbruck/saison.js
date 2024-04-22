@@ -59,6 +59,7 @@
               newGameDom.querySelector('.api__is_overtime').style.display = game.isOvertime ? 'block' : 'none';
               newGameDom.querySelector('.api__is_shoot_out').style.display = game.isShootOut ? 'block' : 'none';
             }
+            //newGameDom.querySelector('.api__article').href = '';
           });
           gameDom.remove();
           const reqURL2 = "https://api.hockeydata.net/data/ih/GetGameReport" +
@@ -110,6 +111,7 @@
                 singleGameDom.querySelector('.api__is_overtime').style.display = gameData.isOvertime ? 'block' : 'none';
                 singleGameDom.querySelector('.api__is_shoot_out').style.display = gameData.isShootOut ? 'block' : 'none';
               }
+              //singleGameDom.querySelector('.api__article').href = '';
             } else {
               console.log(`Error: ${xhr2.status}`);
             }
@@ -155,6 +157,12 @@
             if (game.awayTeamId == teamId) newGameDom.classList.add('game-item--away');
             newGameDom.querySelector('.api__home_team_score').textContent = game.homeTeamScore;
             newGameDom.querySelector('.api__away_team_score').textContent = game.awayTeamScore;
+          }
+          newGameDom.querySelector(game.gameStatus == 4 ? '.api__future_buttons' : '.api__past_buttons').remove();
+          if (game.homeTeamId == teamId || game.awayTeamId == teamId) {
+            //newGameDom.querySelector('.api__article').href = '';
+          } else {
+            newGameDom.querySelector(game.gameStatus == 4 ? '.api__past_buttons' : '.api__future_buttons').remove();
           }
           gameList[getDateString(scheduledDate)] = gameList[getDateString(scheduledDate)] || [];
           gameList[getDateString(scheduledDate)].push(newGameDom);
