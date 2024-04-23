@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V1.2](#v12)
     - [V1.1](#v11)
     - [V1.0](#v10)
 
@@ -22,6 +23,8 @@ Use this in combination with privacy and cookie policy from iubenda or images co
 ## To-Dos
 
 ## Change log
+### V1.2
+Run function once if script runs after Weglot init.
 ### V1.1
 Change class `hidden` to `weglot-hidden` to prevent issues with filter
 ### V1.0
