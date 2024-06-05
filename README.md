@@ -48,12 +48,3 @@ Important note: do NOT use `async` or `defer` for scripts to be executed before 
 A collection of various stylesheets to add to our Webflow projects.
 
 Example: `<link href="https://wearemomentum.github.io/library/stylesheets/general-v0.css" rel="stylesheet" type="text/css">`
-
-## Projects
-Scripts and other files specifically for certain Webflow projects.
-
-Each project has its own folder that contains the files.
-
-Example: `<script defer src="https://wearemomentum.github.io/library/projects/hcinnsbruck/saison.js"></script>`
-
-Important note: do NOT use `async` or `defer` for scripts to be executed before Webflow initialization.
