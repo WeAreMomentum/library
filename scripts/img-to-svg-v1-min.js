@@ -1,0 +1,1 @@
+document.querySelectorAll("[data-img-to-svg]").forEach(e=>{fetch(e.src).then(e=>e.text()).then(s=>{let t=new DOMParser,a=t.parseFromString(s,"image/svg+xml").querySelector("svg");e.id&&(a.id=e.id),e.className&&(a.classList=e.classList),e.parentNode.replaceChild(a,e)})});
