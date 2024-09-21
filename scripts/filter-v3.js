@@ -17,7 +17,6 @@
     constructor(htmlElement) {
       this.element = htmlElement;
       this.filters = {};
-      this.list = this.element.querySelector('.w-dyn-list') || this.element.querySelector('[data-filter="list"]');
       this.items = [];
       this.itemsFiltered = [];
       this.itemsLimited = [];
@@ -50,7 +49,7 @@
         this.emptyState = this.element.querySelector('[data-filter="empty-state"]');
         this.reset();
       } else {
-        this.list.remove();
+        this.element.remove();
       }
     }
     // private methods
