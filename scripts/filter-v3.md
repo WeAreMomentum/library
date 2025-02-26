@@ -4,6 +4,7 @@
     - [Options defaults](#options-defaults)
 - [To-Dos](#to-dos)
 - [Change log](#change-log)
+    - [V3.10](#v310)
     - [V3.9](#v39)
     - [V3.8](#v38)
     - [V3.7](#v37)
@@ -18,6 +19,7 @@
 ## Description
 Adds filter, sort and load-more functionalities to a list of items.
 There are various types of triggers possible, function="filter" and function="sort" must be elements with a value attribute (button, input, select, ...). Use embeds for these preferably.
+If the collection contains more than 100 items, just duplicate the collection list, show the next 100 items and hide it.
 ### Element structure:
 - `[data-filter="group"]` - a page can contain multiple groups
     - `[data-filter="trigger"][data-filter-function="filter"][data-filter-tag=""][value=""]` - optional; triggers filtering; optional attribute: `[data-filter-init]` marks the default filter setting
@@ -34,6 +36,7 @@ Add these attributes to the group if you want to override the defaults
 - `[data-filter-sort=""]` - "{'order':'random'}" or "{'order':'initial'}" or "{'tag':'','order':''}" with 'order': '+', '-'; Note: Webflow only allows ' to be used in Custom Attributes
 - `[data-filter-limit=""]` - the number of items to show by default
 - `[data-filter-more=""]` - the number of items to add on a click on the more-button
+- `[data-filter-focus="true"]` - bool - focus on first new element after triggering filter
 
 ## To-Dos
 - allow multiselect for filters
@@ -46,6 +49,8 @@ function toggleArrayItem(array, item) {
 -->
 
 ## Change log
+### V3.10
+Feature: init filter by URL search query (`?tag=category&filter=news`).
 ### V3.9
 Bugfix: check if there are items to focus before focus.
 ### V3.8

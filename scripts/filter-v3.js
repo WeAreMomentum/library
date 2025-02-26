@@ -1,4 +1,4 @@
-// Filter V 3.9
+// Filter V 3.10
 // by Aleksander Knöbl
 
 (function () {
@@ -33,6 +33,8 @@
       };
       /* doesn't work because of Webflow restrictions with attribute values */
       /* this.init.filters = this.element.dataset.filterDefault ? JSON.parse(this.element.dataset.filterDefault.replaceAll(`'`, `"`)) : {}; */
+      const params = new URLSearchParams(window.location.search);
+      this.init.filters[params.get('tag')] = params.get('filter');
       this.init.sortBy = JSON.parse(this.element.dataset.filterSort ? this.element.dataset.filterSort.replaceAll(`'`, `"`) : '{"order":"initial"}');
       this.element.querySelectorAll('[data-filter="trigger"]').forEach(elem => {
         this.triggers.push(new Trigger(elem, this));
