@@ -121,11 +121,19 @@
 
 		#updateStatus() {
 			const itemCount = this.itemsFiltered.length;
+
 			if (itemCount > 0) {
-				this.statusElement.textContent = `Job-Liste aktualisiert. ${itemCount} Stellen gefunden.`;
+				if (itemCount === 1) {
+					// Spezieller Fall für genau ein Ergebnis
+					this.statusElement.textContent = `Liste aktualisiert. 1 Ergebnis gefunden.`;
+				} else {
+					// Fall für mehrere Ergebnisse
+					this.statusElement.textContent = `Liste aktualisiert. ${itemCount} Ergebnisse gefunden.`;
+				}
 			} else {
+				// Fall für kein Ergebnis
 				this.statusElement.textContent =
-					"Job-Liste aktualisiert. Leider keine Stellen für Ihre Auswahl gefunden.";
+					"Liste aktualisiert. Keine Ergebnisse für Ihre Auswahl gefunden.";
 			}
 		}
 
